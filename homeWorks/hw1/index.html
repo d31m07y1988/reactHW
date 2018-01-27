@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/components/button.min.css">
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+    'use strict'
+
+    class Greeting extends React.Component {
+        render() {
+            return <h1>Hello, {this.props.name}</h1>;
+        }
+    };
+
+
+    class Button extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.handleClick = this.handleClick.bind(this);
+            this.myStyle = 'ui button ' + props.color + ' ' + props.size;
+        }
+        handleClick(e){
+            swal(this.props.alertTitle, this.props.alertText, this.props.alertType);
+        }
+
+        render() {
+            return <button class = {this.myStyle} onClick={this.handleClick}>{this.props.name}</button>;
+        }
+    };
+
+
+
+    ReactDOM.render(
+        <div>
+            <Greeting name = "Batya"/>
+            <Button name = "Push"
+                    alertType="info"
+                    alertTitle="Bugaga"
+                    alertText="a little step for a man a big step for the mankind"
+                    color="red" size="massive"/>
+            <Button name = "Press"
+                    alertType="success"
+                    alertTitle="Wellcome"
+                    alertText="Hello world!"
+                    color="violet" size="mini"/>
+        </div>,
+        document.getElementById('root')
+    );
+
+</script>
+
+
+</body>
+</html>
