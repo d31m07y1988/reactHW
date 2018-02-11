@@ -5,7 +5,7 @@ export default class Greeting extends Component {
 
     render () {
         return (
-            <h1 class="ui center aligned header">Hello, {this.props.name}</h1>
+            <h1 className="ui center aligned header">Hello, {this.props.name}</h1>
         )
     }
 

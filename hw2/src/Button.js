@@ -15,7 +15,7 @@ export default class Button extends Component {
     }
 
     render() {
-        return <button class = {this.myStyle} onClick={this.handleClick}>{this.props.name}</button>;
+        return <button className= {this.myStyle} onClick={this.handleClick}>{this.props.name}</button>;
     }
 
 }

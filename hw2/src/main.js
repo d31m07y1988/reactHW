@@ -6,7 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './style.less';
 
 render(
-    <div class="ui container segment">
+    <div className="ui container segment">
         <Greeting name = "Kostya"/>
         <Button name = "Push"
                 alertType="info"
