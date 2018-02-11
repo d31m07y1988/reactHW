@@ -1,0 +1,13 @@
+div.calc {
+    width:173px;
+}
+
+div.row {
+    display: -webkit-box;
+}
+div.row div button {
+    width: 43px;
+}
+div.display div, div.display input {
+    text-align: right;
+}
