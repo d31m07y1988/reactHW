@@ -1,19 +1,15 @@
 import React, { Component } from 'react'
 import {Display} from "./front/Display";
 import {Button} from "./front/Button";
-import {InfoBlock} from "./front/InfoBlock";
 import {answer} from "./logic/answer";
 import './style.css'
 
 export class Calc extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            first: null,
-            next: null,
-            operation: null,
-        };
+    state = {
+        first: null,
+        next: null,
+        operation: null,
     }
 
     handleClick = (buttonName) => {
@@ -27,9 +23,11 @@ export class Calc extends Component {
     render() {
         return(
             <div className="calc">
-                <div className="display"><InfoBlock val={this.state.first}/></div>
-                <div className="display"><InfoBlock val={this.state.operation}/></div>
-                <div className="display"><Display val={this.state.next || '0'} onChangeHandler={this.updateNext}/></div>
+                <div className="display"><Display val={this.state.next || '0'}
+                                                  val2={this.state.first}
+                                                  val3={this.state.operation}
+                                                  onChangeHandler={this.updateNext}/></div>
+                <div id="error"/>
                 <div className="row">
                     <div><Button name="1" clickHandler={this.handleClick}/></div>
                     <div><Button name="2" clickHandler={this.handleClick}/></div>

@@ -8,6 +8,14 @@ div.row {
 div.row div button {
     width: 43px;
 }
-div.display div, div.display input {
+div.display div div, div.display input {
     text-align: right;
+    width:170px;
+}
+div.display div div:first-child {
+    height: 20px;
+}
+
+#error {
+    color: red;
 }
