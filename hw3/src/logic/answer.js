@@ -21,7 +21,7 @@ export function answer(obj, buttonName) {
                 next:buttonName
             }
         }
-        if (obj.next) {
+        if (obj.next && obj.next !== '0') {
             return {
                 next: obj.next + buttonName
             };
@@ -34,11 +34,7 @@ export function answer(obj, buttonName) {
     if (buttonName === '=') {
         if (obj.first && obj.next && obj.operation) {
             var res = operate(obj.first, obj.next, obj.operation);
-            if(res === null) return {
-                first: obj.first,
-                next: obj.next,
-                operation: obj.operation,
-            }
+            if(res === null) return {}
             return {
                 first: null,
                 next: res,
@@ -49,14 +45,29 @@ export function answer(obj, buttonName) {
         }
     }
 
+    if (buttonName === '±') {
+        if (obj.next) {
+            return { next: (-1 * parseFloat(obj.next)).toString() };
+        }
+        if (obj.first) {
+            return { total: (-1 * parseFloat(obj.total)).toString() };
+        }
+        return {}
+    }
+
+    if (buttonName === '.') {
+        if (obj.next && obj.next.indexOf('.') === -1) {
+            return { next: obj.next + '.'}
+        } else if(!obj.next) {
+            return { next: '0.'}
+        }
+        return {}
+    }
+
     if (obj.operation) {
         if (obj.first && obj.next) {
             res = operate(obj.first, obj.next, obj.operation);
-            if(res === null)  return {
-                first: obj.first,
-                next: obj.next,
-                operation: obj.operation,
-            }
+            if(res === null)  return {}
             return {
                 first: null,
                 next: res,
@@ -70,10 +81,6 @@ export function answer(obj, buttonName) {
                 operation: buttonName,
             };
         }
-    }
-
-    if (!obj.next) {
-        return { operation: buttonName };
     }
 
     return {
